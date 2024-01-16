@@ -1,12 +1,6 @@
+var http = require('http');
 
-const student={
-     firstName:"Sonika",
-     lastName:"Sahana", 
-     marks:50, 
-     rollno:10,
-
-greet(){
-console.log('Hi! i am '+this.firstName+ ' ' + this.lastName);
-}
-};
-student.greet();
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('"Welcome to my Node Js project"');
+}).listen(8080);
