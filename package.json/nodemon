@@ -1,0 +1,16 @@
+{
+  "name": "mypackage",
+  "version": "1.0.0",
+  "description": "this is my package",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+    
+  },
+  "author": "sonika",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
