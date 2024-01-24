@@ -1,4 +1,5 @@
 const http = require('http');
+const fs=require('fs')
 const express = require('express');
 const bodyParser = require('body-parser');
 const app= express();
@@ -9,38 +10,38 @@ app.get('/',(req,res)=>{
             console.log(err)
             data= 'no chat exists';
         }
-    })
-    res.send(`${data}<form action="/" method="POST" onsubmit="document.getElementById('username').value=localStorage.getItem=('username')"><br>
-    <input type="text" ="message"  id="message">
-    <input type="hidden" name="username" id="username">
+    
+    res.send(`${data}<form action="/" method="POST" onsubmit="document.getElementById('username').value=localStorage.getItem('username')"><br>
+    <input type="text" name="message"  id="message"></input>
+    <input type="hidden" name="username" id="username"></input>
         </br>
     <button type="submit">send</button>
     </form>`)
 })
+});
 
     app.post('/' ,(req,res)=>{
         console.log(req.body.username);
         console.log(req.body.message);
 
-        fs.writeFile("username.txt",`${req.body.username}:${req.body.message}`,{flag:a},(err)=>
-          err?console.log(err):res.redirect(err)
+        fs.writeFile("username.txt",`${req.body.username}:${req.body.message}`,{ flag: 'a' },(err)=>
+          err?console.log(err):res.redirect('/')
         );
        
     });
     app.get('/login' ,(req,res)=>{
-        res.send(`<form action="/" method="POST" onsubmit=localStorage.getItem=('username')"><br>
-        <input type="hidden" name="username" id="username">
+       
+        res.send(`<form action="/" method="POST" onsubmit=localStorage.setItem('username',document.getElementById('username').value)"><br>
+        <input type="text" name="username" id="username"></input>
         </br>
         <button type="submit">send</button>
         </form>`)
+        res.redirect('/')
     
-})
-    
-
-
-
+         } )    
 const server=http.createServer(app);
 server.listen(7000);
+
 
 
 
